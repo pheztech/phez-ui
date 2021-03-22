@@ -1,12 +1,14 @@
 import postcss from "rollup-plugin-postcss";
+import typescript from '@rollup/plugin-typescript';
 
 export default {
-	input: "./index.tsx",
+	input: "./src/index.tsx",
 	output: {
-		file: "./output.tsx",
+		file: "./src/output.tsx",
 		format: "esm",
 	},
 	plugins: [
+		typescript(),
 		postcss({
 			config: {
 				path: "./postcss.config.js",
