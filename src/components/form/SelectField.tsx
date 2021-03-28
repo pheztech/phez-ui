@@ -22,11 +22,11 @@ const SelectField: React.FC<Props> = ({ label, options, className, form, field, 
 	return (
 		<label className={className}>
 			<p className='text-sm font-medium text-gray-700'>{label}</p>
-			<Dropdown name={field.name} label={field.value ?? '-'} className={buttonStyle} fullWidth onBlur={field.onBlur}>
+			<Dropdown name={field.name} value={field.value} label={field.value ?? '-'} className={buttonStyle} fullWidth onBlur={field.onBlur}>
 				<div className={optionsStyle}>
 					<div className='overflow-y-scroll max-h-40 flex flex-col w-full'>
 						{options.map((e, i) => (
-							<button className={`py-2 px-4 text-left ${e.value === field.value ? 'bg-gray-300' : 'hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-300'}`} key={i} value={e.value} name={field.name} onClick={field.onChange}>
+							<button className={`py-2 px-4 text-left ${e.value === field.value ? 'bg-gray-300' : 'hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-300'}`} key={i} value={e.value} name={field.name} onBlur={field.onBlur} onClick={field.onChange}>
 								{e.label}
 							</button>
 						))}
