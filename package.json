@@ -1,6 +1,6 @@
 {
   "name": "@phez/ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React components built with TailwindCSS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,7 +10,8 @@
     "publish": "NODE_ENV=production rollup -c"
   },
   "files": [
-    "lib"
+    "lib",
+    "src/styles/*.css"
   ],
   "repository": {
     "type": "git",
