@@ -10,7 +10,6 @@
 		],
 		"declaration": true,
 		"outDir": "./lib",
-		"baseUrl": "./src",
 		"allowJs": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,

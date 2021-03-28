@@ -1,6 +1,6 @@
 import { FieldProps, getIn } from "formik"
-import { Dropdown } from "index"
 import React from "react"
+import Dropdown from "../Dropdown"
 
 interface Option {
 	value: any
