@@ -5,7 +5,8 @@
   "main": "lib/phezui",
   "types": "lib/phezui.d.ts",
   "scripts": {
-    "build": "rm ./lib/* && tsc"
+    "clean": "rm ./src/output.tsx",
+    "build": "NODE_ENV=production rollup -c"
   },
   "files": [
     "lib"
