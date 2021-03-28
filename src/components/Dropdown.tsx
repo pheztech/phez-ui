@@ -1,15 +1,14 @@
 import { Transition } from "@headlessui/react"
-import React, { useEffect, useState } from "react"
+import React, { ButtonHTMLAttributes, useEffect, useState } from "react"
 
-interface Props {
+interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'id' | 'onClick' | 'ref' | 'children'> {
 	label: any
 	children: any
-	className?: string
 	position?: string
 	fullWidth?: boolean
 }
 
-const Dropdown: React.FC<Props> = ({ label, children, className, position, fullWidth }) => {
+const Dropdown: React.FC<Props> = ({ label, children, className, position, fullWidth, ...props }) => {
 	const [visible, setVisible] = useState(false)
 	const toggle = () => setVisible(!visible)
 
@@ -47,7 +46,7 @@ const Dropdown: React.FC<Props> = ({ label, children, className, position, fullW
 
 	return (
 		<div className={wrapperStyle}>
-			<button id='dropdown-menu' onClick={toggle} ref={buttonRef} aria-expanded='false' aria-haspopup='true' className={className} children={label} />
+			<button id='dropdown-menu' onClick={toggle} ref={buttonRef} aria-expanded='false' aria-haspopup='true' className={className} children={label} {...props} />
 			<div className={popoverStyle} ref={popoverRef}>
 				<Transition show={visible} {...animation} role='menu' aria-orientation='vertical' aria-labelledby='dropdown-menu'>
 					<div className='border-primary bg-white rounded-md shadow-lg' children={children} />
