@@ -4,6 +4,7 @@ interface Props {
     children: any;
     className?: string;
     position?: string;
+    fullWidth?: boolean;
 }
 declare const Dropdown: React.FC<Props>;
 export declare type DropdownProps = Props;
