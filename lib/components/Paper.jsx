@@ -9,6 +9,6 @@ var Paper = function (_a) {
     var style = 'border-primary rounded-md bg-white';
     if (className)
         style += ' ' + className;
-    return (react_1.default.createElement("div", { className: style, children: children }));
+    return (<div className={style} children={children}/>);
 };
 exports.default = Paper;

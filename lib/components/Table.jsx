@@ -15,10 +15,12 @@ var Table = function (_a) {
         var v = formik_1.getIn(row, column.key);
         return (_b = (_a = column.render) === null || _a === void 0 ? void 0 : _a.call(column, v, row)) !== null && _b !== void 0 ? _b : v;
     };
-    return (react_1.default.createElement("table", { className: className },
-        react_1.default.createElement("thead", null,
-            react_1.default.createElement("tr", { children: columns.map(function (e, i) { return react_1.default.createElement("th", { className: headerStyle(i), key: i }, e.name); }) })),
-        react_1.default.createElement("tfoot", { children: footer }),
-        react_1.default.createElement("tbody", { children: rows.map(function (d, r) { return react_1.default.createElement("tr", { key: r, className: rowStyle, onClick: function () { return onClickRow === null || onClickRow === void 0 ? void 0 : onClickRow(d); } }, columns.map(function (e, c) { return react_1.default.createElement("td", { className: bodyStyle(r, c), key: c }, renderBody(d, e)); })); }) })));
+    return (<table className={className}>
+			<thead>
+				<tr children={columns.map(function (e, i) { return <th className={headerStyle(i)} key={i}>{e.name}</th>; })}/>
+			</thead>
+			<tfoot children={footer}/>
+			<tbody children={rows.map(function (d, r) { return <tr key={r} className={rowStyle} onClick={function () { return onClickRow === null || onClickRow === void 0 ? void 0 : onClickRow(d); }}>{columns.map(function (e, c) { return <td className={bodyStyle(r, c)} key={c}>{renderBody(d, e)}</td>; })}</tr>; })}/>
+		</table>);
 };
 exports.default = Table;
