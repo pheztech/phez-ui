@@ -15,8 +15,9 @@ interface Props {
 }
 
 const SelectField: React.FC<Props> = ({ label, name, options, className }) => {
-	const { values, touched, setFieldValue } = useFormikContext<any>()
+	const { values, touched, errors, setFieldValue } = useFormikContext<any>()
 	const selectedValue = getIn(values, name)
+	const errorText = getIn(touched, name) && getIn(errors, name)
 
 	const labelStyle = `inline-block relative whitespace-nowrap ${className}`
 	const buttonStyle = 'border-primary focus:border-blue-500 rounded-md px-2 py-1 text-base text-left outline-none w-full'
@@ -53,6 +54,7 @@ const SelectField: React.FC<Props> = ({ label, name, options, className }) => {
 					</>
 				)}
 			</Listbox>
+			<p className='text-xs text-red-500'>{errorText}</p>
 		</label>
 	)
 }
