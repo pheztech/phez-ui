@@ -1,8 +1,7 @@
-import React from "react";
-interface Props {
+import React, { ButtonHTMLAttributes } from "react";
+interface Props extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'id' | 'onClick' | 'ref' | 'children'> {
     label: any;
     children: any;
-    className?: string;
     position?: string;
     fullWidth?: boolean;
 }
