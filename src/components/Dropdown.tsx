@@ -6,9 +6,10 @@ interface Props {
 	children: any
 	className?: string
 	position?: string
+	fullWidth?: boolean
 }
 
-const Dropdown: React.FC<Props> = ({ label, children, className, position }) => {
+const Dropdown: React.FC<Props> = ({ label, children, className, position, fullWidth }) => {
 	const [visible, setVisible] = useState(false)
 	const toggle = () => setVisible(!visible)
 
@@ -38,10 +39,16 @@ const Dropdown: React.FC<Props> = ({ label, children, className, position }) => 
 		leaveTo: 'transform opacity-0 scale-95'
 	}
 
+	var popoverStyle = 'absolute'
+	if (position) popoverStyle += ' ' + position
+	
+	var wrapperStyle = 'inline-block relative whitespace-nowrap'
+	if (fullWidth) wrapperStyle += ' w-full'
+
 	return (
-		<div className='inline-block relative whitespace-nowrap'>
+		<div className={wrapperStyle}>
 			<button id='dropdown-menu' onClick={toggle} ref={buttonRef} aria-expanded='false' aria-haspopup='true' className={className} children={label} />
-			<div className={`absolute ${position}`} ref={popoverRef}>
+			<div className={popoverStyle} ref={popoverRef}>
 				<Transition show={visible} {...animation} role='menu' aria-orientation='vertical' aria-labelledby='dropdown-menu'>
 					<div className='border-primary bg-white rounded-md shadow-lg' children={children} />
 				</Transition>
