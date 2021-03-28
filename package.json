@@ -1,6 +1,6 @@
 {
   "name": "@phez/ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "React components built with TailwindCSS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
