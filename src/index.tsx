@@ -4,6 +4,7 @@ export { default as Modal } from './components/Modal'
 export { default as Paper } from './components/Paper'
 export { default as Portal } from './components/Portal'
 export { default as Table } from './components/Table'
+export { default as Button } from './components/Button'
 
 export { default as Checkbox } from './components/form/Checkbox'
 export { default as NumberField } from './components/form/NumberField'
