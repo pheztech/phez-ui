@@ -6,8 +6,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "clean": "rm ./src/output.tsx",
-    "build": "tsc",
-    "publish": "NODE_ENV=production rollup -c"
+    "build": "tsc"
   },
   "files": [
     "lib",
@@ -37,14 +36,11 @@
     "formik": "^2.2.6"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^8.2.0",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
     "autoprefixer": "^9.8.6",
     "postcss": "^7.0.35",
-    "rollup": "^2.42.1",
-    "rollup-plugin-postcss": "^4.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
     "typescript": "^4.2.3"
   }
