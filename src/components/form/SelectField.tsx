@@ -16,13 +16,13 @@ interface Props extends FieldProps {
 const SelectField: React.FC<Props> = ({ label, options, className, form, field, ...props }) => {
 	const errorText = getIn(form.touched, field.name) && getIn(form.errors, field.name)
 
-	const buttonStyle = `border ${errorText ? 'border-red-500' : 'border-gray-300'} focus:border-blue-500 rounded-md px-2 py-1 text-base text-left outline-none w-full`
+	const buttonStyle = `border ${errorText ? 'border-red-500' : 'border-gray-300'} focus:border-blue-500 rounded-md px-2 py-1 text-base text-left outline-none w-full appearance-none`
 	const optionsStyle = 'absolute border-primary bg-white rounded-md shadow-lg mt-1 py-2 outline-none min-w-full z-10 overflow-hidden'
 
 	return (
 		<label className={className}>
 			<p className='text-sm font-medium text-gray-700'>{label}</p>
-			<Dropdown name={field.name} value={field.value} label={field.value ?? '-'} className={buttonStyle} fullWidth onBlur={field.onBlur}>
+			{/* <Dropdown name={field.name} value={field.value} label={field.value ?? '-'} className={buttonStyle} fullWidth onBlur={field.onBlur}>
 				<div className={optionsStyle}>
 					<div className='overflow-y-scroll max-h-40 flex flex-col w-full'>
 						{options.map((e, i) => (
@@ -32,7 +32,11 @@ const SelectField: React.FC<Props> = ({ label, options, className, form, field, 
 						))}
 					</div>
 				</div>
-			</Dropdown>
+			</Dropdown> */}
+			<select className={buttonStyle} {...field} {...props}>
+				<option>Select {label}...</option>
+				{options.map(e => <option value={e.value}>{e.label}</option>)}
+			</select>
 			<p className='text-xs text-red-500'>{errorText}</p>
 		</label>
 	)
