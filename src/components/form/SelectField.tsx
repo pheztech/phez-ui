@@ -1,5 +1,5 @@
-import Dropdown from "components/Dropdown"
 import { FieldProps, getIn } from "formik"
+import { Dropdown } from "index"
 import React from "react"
 
 interface Option {
@@ -22,7 +22,7 @@ const SelectField: React.FC<Props> = ({ label, options, className, form, field, 
 	return (
 		<label className={className}>
 			<p className='text-sm font-medium text-gray-700'>{label}</p>
-			<Dropdown label={field.value ?? '-'} className={buttonStyle}>
+			<Dropdown label={field.value ?? '-'} className={buttonStyle} fullWidth>
 				<div className={optionsStyle}>
 					<div className='overflow-y-scroll max-h-40 flex flex-col w-full'>
 						{options.map((e, i) => (
