@@ -1,11 +1,11 @@
 import { useState } from "react"
-import Table, { ColDef, TableProps } from "./Table"
+import Table, { TableProps } from "./Table"
 
 interface Props extends TableProps {
 	rowCount?: number
 }
 
-const DataGrid: React.FC<Props> = ({ columns, rows, rowCount }) => {
+const DataGrid: React.FC<Props> = ({ columns, rows, rowCount, ...props }) => {
 	const rowLength = rowCount ?? rows.length
 	const pageCount = Math.ceil(rows.length / rowLength)
 
@@ -47,11 +47,7 @@ const DataGrid: React.FC<Props> = ({ columns, rows, rowCount }) => {
 		</tr>
 	)
 
-	return (
-		<div className='overflow-hidden'>
-			<Table className='w-full' columns={columns} rows={rows.slice(page * rowLength, page * rowLength + rowLength)} footer={renderFooter()} />
-		</div>
-	)
+	return <Table {...props} columns={columns} rows={rows.slice(page * rowLength, page * rowLength + rowLength)} footer={renderFooter()} />
 }
 
 export default DataGrid

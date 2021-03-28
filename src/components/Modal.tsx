@@ -1,14 +1,29 @@
 import { Transition } from "@headlessui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import Paper from "./Paper";
 import Portal from "./Portal";
 
 interface Props {
 	open: boolean,
+	onClose: () => void
 	children: any
 }
 
-const Modal: React.FC<Props> = ({ open, children }) => {
+const Modal: React.FC<Props> = ({ open, onClose, children }) => {
+	const bgRef = React.createRef<HTMLDivElement>()
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleDocumentClick)
+		return () => document.removeEventListener('mousedown', handleDocumentClick)
+	}, [ bgRef ])
+	
+	const handleDocumentClick = (event: MouseEvent) => {
+		if (!bgRef.current) return
+		const node = event.target as Node
+
+		if (node === bgRef.current) onClose()
+	}
+
 	const bgAnimation = {
 		enter: 'transition-opacity ease-out duration-300',
 		enterFrom: 'opacity-0',
@@ -27,16 +42,15 @@ const Modal: React.FC<Props> = ({ open, children }) => {
 		leaveTo: 'opacity-0 translate-y-4 sm:scale-95'
 	}
 
+	// overflow-hidden isnt enabled until the sm breakpoint is reached so scrolling will still work on smaller screens
 	return (
 		<Portal selector='#__next'>
-			<Transition show={open}>
-				<Transition.Child {...bgAnimation}>
-					<div className='absolute bg-black bg-opacity-50 top-0 bottom-0 right-0 left-0 transition-opacity'></div>
+			<Transition className='fixed inset-0 flex flex-wrap justify-center' show={open}>
+				<Transition.Child className='absolute inset-0' {...bgAnimation}>
+					<div ref={bgRef} className='bg-black bg-opacity-50 transition-opacity h-full'></div>
 				</Transition.Child>
-				<Transition.Child {...fgAnimation}>
-					<div className='absolute top-1/4 left-4 sm:left-1/4 right-4 sm:right-1/4'>
-						<Paper children={children} />
-					</div>
+				<Transition.Child className='absolute self-center w-full px-4 sm:px-10 md:w-3/4 lg:w-3/5 xl:w-2/5' {...fgAnimation}>
+					<Paper children={children} />
 				</Transition.Child>
 			</Transition>
 		</Portal>

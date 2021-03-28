@@ -1,9 +1,13 @@
 interface Props {
-	children: any
+	className?: string
+	children?: any
 }
 
-const Paper: React.FC<Props> = ({ children }) => {
-	return (<div className='border-primary rounded-md bg-white' children={children} />)
+const Paper: React.FC<Props> = ({ className, children }) => {
+	var style = 'border-primary rounded-md bg-white'
+	if (className) style += ' ' + className
+
+	return (<div className={style} children={children} />)
 }
 
 export type PaperProps = Props

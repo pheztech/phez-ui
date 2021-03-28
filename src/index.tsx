@@ -4,6 +4,6 @@ export { default as Modal } from './components/Modal'
 export { default as Paper } from './components/Paper'
 export { default as Portal } from './components/Portal'
 export { default as Table } from './components/Table'
-export { default as TextArea } from './components/TextArea'
-export { default as TextField } from './components/TextField'
+export { default as TextArea } from './components/form/TextArea'
+export { default as TextField } from './components/form/TextField'
 
