@@ -2,11 +2,12 @@
   "name": "@phez/ui",
   "version": "1.0.0",
   "description": "React components built with TailwindCSS",
-  "main": "lib/phezui",
-  "types": "lib/phezui.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "clean": "rm ./src/output.tsx",
-    "build": "NODE_ENV=production rollup -c"
+    "build": "tsc",
+    "publish": "NODE_ENV=production rollup -c"
   },
   "files": [
     "lib"

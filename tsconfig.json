@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"module": "es6",
+		"module": "commonjs",
 		"target": "es5",
 		"jsx": "react",
 		"lib": [
@@ -21,12 +21,9 @@
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"noEmit": true,
 	},
 	"include": [
-		"src",
-		"**/*.ts",
-		"**/*.tsx"
+		"src"
 	],
 	"exclude": [
 		"node_modules",
