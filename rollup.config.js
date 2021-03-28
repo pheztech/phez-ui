@@ -20,5 +20,5 @@ export default {
 			},
 		}),
 	],
-	external: ["react", "react-dom", "@headlessui/react", "formik"],
+	external: ["react", "react-dom", "@headlessui/react", "formik", "react-number-format"],
 }
